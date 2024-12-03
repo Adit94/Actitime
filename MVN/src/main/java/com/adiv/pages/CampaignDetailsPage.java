@@ -37,7 +37,7 @@ public class CampaignDetailsPage
 		driver.findElement(By.xpath("//input[@name='property(Num sent)']")).sendKeys("280");
 		driver.findElement(By.xpath("(//input[@value='Save'])[2]")).click();
 		Thread.sleep(5);
-		driver.findElement(By.partialLinkText("Logout")).click();
+		driver.findElement(By.partialLinkText("Logout"));
 		
 	}
 }
