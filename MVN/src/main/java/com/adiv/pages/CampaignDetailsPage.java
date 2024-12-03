@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.Select;
 
 public class CampaignDetailsPage 
 {
-	public static void main(String[] args) 
+	public static void main(String[] args) throws InterruptedException 
 	{
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
@@ -36,10 +36,8 @@ public class CampaignDetailsPage
 		driver.findElement(By.xpath("//input[@name='property(Expected Response)']")).sendKeys("200");
 		driver.findElement(By.xpath("//input[@name='property(Num sent)']")).sendKeys("280");
 		driver.findElement(By.xpath("(//input[@value='Save'])[2]")).click();
+		Thread.sleep(5);
+		driver.findElement(By.partialLinkText("Logout")).click();
 		
-		public static void comp()
-		{
-			
-		}
 	}
 }
