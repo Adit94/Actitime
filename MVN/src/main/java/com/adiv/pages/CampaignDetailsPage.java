@@ -36,5 +36,10 @@ public class CampaignDetailsPage
 		driver.findElement(By.xpath("//input[@name='property(Expected Response)']")).sendKeys("200");
 		driver.findElement(By.xpath("//input[@name='property(Num sent)']")).sendKeys("280");
 		driver.findElement(By.xpath("(//input[@value='Save'])[2]")).click();
+		
+		public static void comp()
+		{
+			
+		}
 	}
 }
