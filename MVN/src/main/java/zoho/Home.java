@@ -40,13 +40,5 @@ public class Home
 		driver.findElement(By.xpath("(//input[@value='Save'])[2]")).click();
 		driver.findElement(By.linkText("Leads")).click();
 		driver.findElement(By.xpath("//input[@value='New Lead']")).click();
-		//driver.findElement(By.xpath("//img[@title='Calendar']")).click();
-		/*Set<String>allwid = driver.getWindowHandles();
-				String std = driver.getWindowHandle();
-				for(String wid:allwid)
-				{
-					driver.switchTo().window(wid);
-				}*/
 	}
-
 }
