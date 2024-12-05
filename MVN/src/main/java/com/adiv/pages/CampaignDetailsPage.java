@@ -1,6 +1,7 @@
 package com.adiv.pages;
 
 import java.time.Duration;
+import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -22,14 +23,44 @@ public class CampaignDetailsPage
 		driver.findElement(By.linkText("Campaigns")).click();
 		driver.findElement(By.xpath("//input[@value='New Campaign']")).click();
 		driver.findElement(By.xpath("//input[@name='property(Campaign Name)']")).sendKeys("LG Refrigerator");
-		WebElement st = driver.findElement(By.name("property(Type)"));
+		/*WebElement st = driver.findElement(By.name("property(Type)"));
 		Select s1 = new Select(st);
-		s1.selectByValue("Conference");
+		s1.selectByValue("Conference");*/
 		WebElement t = driver.findElement(By.name("property(Status)"));
 		Select s = new Select(t);
 		s.selectByValue("Inactive");
-		driver.findElement(By.xpath("//input[@name='property(Start Date)']")).sendKeys("08/02/2024");
-		driver.findElement(By.xpath("//input[@name='property(End Date)']")).sendKeys("08/05/2024");
+		WebElement o = s.getFirstSelectedOption();
+		driver.findElement(By.xpath("//img[@title='Calendar']")).click();
+		Set<String>allwid=driver.getWindowHandles();
+		String pwid=driver.getWindowHandle();
+		for(String wid:allwid)
+		{
+			driver.switchTo().window(wid);
+		}
+		for(int i=0;i<4;i++)
+		{
+			driver.findElement(By.partialLinkText("‹")).click();
+			Thread.sleep(5);
+		}
+		Thread.sleep(5);
+		driver.findElement(By.partialLinkText("2")).click();
+		driver.switchTo().window(pwid);
+		Thread.sleep(5);
+		driver.findElement(By.xpath("(//img[@title='Calendar'])[2]")).click();
+		Set<String>allwid1=driver.getWindowHandles();
+		String pwid1=driver.getWindowHandle();
+		for(String wid1:allwid1)
+		{
+			driver.switchTo().window(wid1);
+		}
+		for(int i=0;i<4;i++)
+		{
+			driver.findElement(By.partialLinkText("‹")).click();
+			Thread.sleep(5);
+		}
+		Thread.sleep(5);
+		driver.findElement(By.partialLinkText("5")).click();
+		driver.switchTo().window(pwid1);
 		driver.findElement(By.xpath("//input[@name='property(Expected Revenue)']")).sendKeys("7277200");
 		driver.findElement(By.xpath("//input[@name='property(Budgeted Cost)']")).sendKeys("30000");
 		driver.findElement(By.xpath("//input[@name='property(Actual Cost)']")).sendKeys("25990");
@@ -38,6 +69,6 @@ public class CampaignDetailsPage
 		driver.findElement(By.xpath("(//input[@value='Save'])[2]")).click();
 		Thread.sleep(5);
 		driver.findElement(By.partialLinkText("Logout"));
-		
+
 	}
 }

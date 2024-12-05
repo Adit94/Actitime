@@ -12,12 +12,16 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 
+import com.adiv.pages.CampaignListPage;
+import com.adiv.pages.CreateCampaignPage;
 import com.adiv.pages.HomePage;
 import com.adiv.pages.LoginPage;
 
 
 public class BaseClass {
 	public static WebDriver driver;
+	
+	
 
 	public FileUtils f = new FileUtils();
 	@Parameters("browser")
@@ -31,6 +35,7 @@ public class BaseClass {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		String url = f.getPropertyData("url");
 		driver.get(url);
+		
 		
 	}
 
