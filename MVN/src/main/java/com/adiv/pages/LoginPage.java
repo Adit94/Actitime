@@ -23,4 +23,9 @@ public class LoginPage
 		pwTbx.sendKeys(pwd);
 		LoginBtn.click();
 	}
+	public boolean isDisplayed()
+	{
+		return false;
+		
+	}
 }

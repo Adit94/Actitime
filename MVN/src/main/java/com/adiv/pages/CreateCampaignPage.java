@@ -10,14 +10,15 @@ public class CreateCampaignPage
 {
 	@FindBy(xpath="//input[@value='New Campaign']")
 	private WebElement NewCampBtn;
+	@FindBy(name="property(Type)")
+	private WebElement TypeListBox;
+	@FindBy(name="property(Status)")
+	private WebElement StatusListBox;
 	@FindBy(xpath="//input[@name='property(Campaign Name)']")
 	private WebElement CampNameTbx;
 	@FindBy(xpath="(//input[@value='Save'])[2]")
 	private WebElement SaveBtn;
-	@FindBy(name="property(Status)")
-	private WebElement StatusListBox;
-	@FindBy(xpath="//option[@value='Inactive']")
-	private WebElement Status;
+	
 	@FindBy(xpath="//input[@name='property(Start Date)']")
 	private WebElement StartDt;
 	@FindBy(xpath="//input[@name='property(End Date)']")
@@ -42,18 +43,19 @@ public class CreateCampaignPage
 	public WebElement getCampName() {
 		return CampNameTbx;
 	}
+	public WebElement getCampType() {
+		return TypeListBox;
+	}
 	public WebElement getSave() {
 		return SaveBtn;
 	}
-	public WebElement getStatusList() {
+	public WebElement getCampStatus() {
 		return StatusListBox;
 	}
-	public WebElement getStatus() {
-		return Status;
-	}
-	public WebElement getStartDate() {
+	
+	/*public WebElement getStartDate() {
 		return StartDt;
-	}
+	}*/
 	public WebElement getEndDate() {
 		return EndDt;
 	}
@@ -71,6 +73,9 @@ public class CreateCampaignPage
 	}
 	public WebElement NumSent() {
 		return Num;
+	}
+	public void Date(String date) {
+		StartDt.sendKeys(date);
 	}
 }
 	
