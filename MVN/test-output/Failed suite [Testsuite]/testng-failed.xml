@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Failed suite [Testsuite]]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Integration(failed)(failed)">
+    <classes>
+      <class name="com.adiv.testscript.LoginModule">
+        <methods>
+          <include name="login"/>
+          <include name="openBrowser"/>
+          <include name="LoginModule"/>
+          <include name="closeBrowser"/>
+          <include name="logout"/>
+        </methods>
+      </class> <!-- com.adiv.testscript.LoginModule -->
+      <class name="com.adiv.testscript.CampaignModule">
+        <methods>
+          <include name="login"/>
+          <include name="openBrowser"/>
+          <include name="CampaignModule"/>
+          <include name="logout"/>
+          <include name="closeBrowser"/>
+        </methods>
+      </class> <!-- com.adiv.testscript.CampaignModule -->
+      <class name="com.adiv.testscript.HomeModule">
+        <methods>
+          <include name="login"/>
+          <include name="openBrowser"/>
+          <include name="HomeModule"/>
+          <include name="logout"/>
+          <include name="closeBrowser"/>
+        </methods>
+      </class> <!-- com.adiv.testscript.HomeModule -->
+    </classes>
+  </test> <!-- Integration(failed)(failed) -->
+</suite> <!-- Failed suite [Failed suite [Testsuite]] -->

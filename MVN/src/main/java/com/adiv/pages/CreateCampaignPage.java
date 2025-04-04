@@ -53,9 +53,9 @@ public class CreateCampaignPage
 		return StatusListBox;
 	}
 	
-	/*public WebElement getStartDate() {
+	public WebElement getStartDate() {
 		return StartDt;
-	}*/
+	}
 	public WebElement getEndDate() {
 		return EndDt;
 	}
@@ -73,9 +73,6 @@ public class CreateCampaignPage
 	}
 	public WebElement NumSent() {
 		return Num;
-	}
-	public void Date(String date) {
-		StartDt.sendKeys(date);
 	}
 }
 	

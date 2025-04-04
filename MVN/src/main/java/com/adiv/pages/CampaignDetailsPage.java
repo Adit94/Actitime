@@ -7,38 +7,43 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 public class CampaignDetailsPage 
 {
-	public static void main(String[] args) throws InterruptedException 
-	{
-		WebDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-		driver.get("http://192.168.44.128:8080");
-		driver.findElement(By.id("userName")).sendKeys("rashmi@dell.com");
-		driver.findElement(By.id("passWord")).sendKeys("123456");
-		driver.findElement(By.xpath("//input[@title='Sign In']")).click();
-		driver.findElement(By.linkText("Campaigns")).click();
-		driver.findElement(By.xpath("//input[@value='New Campaign']")).click();
-		driver.findElement(By.xpath("//input[@name='property(Campaign Name)']")).sendKeys("LG Refrigerator");
-		WebElement st = driver.findElement(By.name("property(Type)"));
-		Select s1 = new Select(st);
-		s1.selectByValue("Conference");
-		WebElement t = driver.findElement(By.name("property(Status)"));
-		Select s = new Select(t);
-		s.selectByValue("Inactive");
-		driver.findElement(By.xpath("//input[@name='property(Start Date)']")).sendKeys("08/02/2024");
-		driver.findElement(By.xpath("//input[@name='property(End Date)']")).sendKeys("08/05/2024");
-		driver.findElement(By.xpath("//input[@name='property(Expected Revenue)']")).sendKeys("7277200");
-		driver.findElement(By.xpath("//input[@name='property(Budgeted Cost)']")).sendKeys("30000");
-		driver.findElement(By.xpath("//input[@name='property(Actual Cost)']")).sendKeys("25990");
-		driver.findElement(By.xpath("//input[@name='property(Expected Response)']")).sendKeys("200");
-		driver.findElement(By.xpath("//input[@name='property(Num sent)']")).sendKeys("280");
-		driver.findElement(By.xpath("(//input[@value='Save'])[2]")).click();
-		Thread.sleep(5);
-		driver.findElement(By.partialLinkText("Logout")).click();
+	WebDriver driver;
+	@FindBy(linkText="Logout [rashmi@dell.com]")
+	private WebElement LogoutLink;
 
+
+	public CampaignDetailsPage(WebDriver driver)
+	{
+		PageFactory.initElements(driver, this);
+	}
+	public void verifyTitle(WebDriver driver, String exp_title)
+	{	
+		String act_title = driver.getTitle();
+		Assert.assertEquals(act_title, exp_title,"Title does not match");
+	}
+
+	public void verifyDetails(String expt_Campaign_Name, String expt_Type, String expt_Status, String expt_Start_date, String expt_End_date, String expt_Expected_Revenue, String expt_Budgeted_Cost, String expt_Actual_Cost, String expt_Expected_Response, String expt_Num_sent)
+	{
+		Assert.assertEquals(driver.findElement(By.id("Campaign Name")).getText(), expt_Campaign_Name,"Campaign Name mismatch");
+		Assert.assertEquals(driver.findElement(By.id("Type")).getText(), expt_Type,"Campaign Type mismatch");
+		Assert.assertEquals(driver.findElement(By.id("Status")).getText(), expt_Status,"Campaign Status mismatch");
+		Assert.assertEquals(driver.findElement(By.id("Start Date")).getText(), expt_Start_date,"Start Date mismatch");
+		Assert.assertEquals(driver.findElement(By.id("End Date")).getText(), expt_End_date,"End Date mismatch");
+		Assert.assertEquals(driver.findElement(By.id("Expected Revenue")).getText(), expt_Expected_Revenue,"Expected Revenue mismatch");	
+		Assert.assertEquals(driver.findElement(By.id("Budgeted Cost")).getText(), expt_Budgeted_Cost,"Budgeted Cost mismatch");	
+		Assert.assertEquals(driver.findElement(By.id("Actual Cost")).getText(), expt_Actual_Cost,"Actual Cost mismatch");	
+		Assert.assertEquals(driver.findElement(By.id("Expected Response")).getText(), expt_Expected_Response,"Expected Response mismatch");	
+		Assert.assertEquals(driver.findElement(By.id("Num sent")).getText(), expt_Num_sent,"Num sent mismatch");			
+	}
+	public void logout()
+	{
+		LogoutLink.click();
 	}
 }

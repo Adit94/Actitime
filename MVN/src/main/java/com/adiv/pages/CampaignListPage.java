@@ -4,20 +4,27 @@ import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 public class CampaignListPage 
 {
-	public static void main(String[] args) 
+	@FindBy(xpath="//input[@value='New Campaign']")
+	private WebElement NewCampnBtn;
+	public CampaignListPage(WebDriver driver)
 	{
-		WebDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-		driver.get("http://192.168.44.128:8080");
-		driver.findElement(By.id("userName")).sendKeys("rashmi@dell.com");
-		driver.findElement(By.id("passWord")).sendKeys("123456");
-		driver.findElement(By.xpath("//input[@title='Sign In']")).click();
-		driver.findElement(By.linkText("Campaigns")).click();
+		PageFactory.initElements(driver, this);
 	}
-	
+	public void setNewCampn() 
+	{
+		NewCampnBtn.click();
+	}
+	public void verifyTitle(WebDriver driver, String exp_title)
+	{	
+		String act_title = driver.getTitle();
+		Assert.assertEquals(act_title, exp_title,"Title does not match");
+	}
 }

@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Suite">
-  <test thread-count="5" name="Test">
-  </test> <!-- Test -->
-</suite> <!-- Suite -->
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="TestSuite" parallel="tests">    
+    <test thread-count="5" name="Functional" >
+        <classes>
+            <class name="com.adiv.testscript.VendorsModule" />
+        </classes>
+    </test>
+    
+    <test thread-count="5" name="Integration">
+        <classes>
+            <class name="com.adiv.testscript.CampaignsModule" />
+        </classes>
+    </test>
+    
+    
+</suite>
