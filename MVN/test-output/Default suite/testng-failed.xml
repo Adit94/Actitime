@@ -3,15 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.adiv.testscript.Endtoend">
+      <class name="com.adiv.testscript.CampaignsModule">
         <methods>
           <include name="login"/>
           <include name="openBrowser"/>
+          <include name="CampaignModule"/>
           <include name="closeBrowser"/>
           <include name="logout"/>
-          <include name="Endtoend"/>
         </methods>
-      </class> <!-- com.adiv.testscript.Endtoend -->
+      </class> <!-- com.adiv.testscript.CampaignsModule -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

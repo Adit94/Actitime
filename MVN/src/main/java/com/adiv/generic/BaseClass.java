@@ -42,7 +42,6 @@ public class BaseClass {
 		String pwd = f.getPropertyData("password");
 		LoginPage l = new LoginPage(driver);
 		l.Login(un,pwd);
-		Thread.sleep(5000);
 
 
 	}
